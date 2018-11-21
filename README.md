@@ -3,10 +3,9 @@
 
 - [ ] Pompa dokümanlarının kaydedilmesi / müşteriyle paylaşılması
 
-##### Veritabanı Yönetimi
-
-* **PompaModelleri  (Class)**
+* **PompaModel  (Class)**
 * pompa
+* pompa_aciklama
 * pompa_bi_kitapcigi
 * pompa_tip_kitapcigi
 * pompa_patlamis
@@ -18,7 +17,7 @@
 - [ ] Devreye alma talep formu
 - [ ] Bakım sözleşmesi talep formu
 
-* **Talepler (Class)**
+* **Talep (Class)**
 * talep_firma_adi
 * talep_amaci
 * talep_yetkili
@@ -43,7 +42,7 @@
 - [ ] Personel araç kullanım bilgileri
 - [ ] Araç kayıtları (km, sigorta tarihi, muayene tarihi, bakım tarihi)
 
-* **Araclar (Class)**
+* **Arac (Class)**
 * model
 * km
 
@@ -53,7 +52,7 @@
 - [ ] Ürün servis geçmişinin kaydedilmesi
 - [ ] Ürün üzerine yapıştırılan QR kodu ile bilgilere erişim
 
-* **ServisRaporlari (Class)**
+* **ServisRapor (Class)**
 * rapor_no
 * kontrol_turu
 * musteri
@@ -105,7 +104,7 @@
 - [ ] Personel yönlendirme
 - [ ] Personel servis programının kaydı, kontrolü ve takibi
 
-### Personel Bakım Modülü
+### Periyodik Bakım Modülü
 
 - [ ] Periyodik bakım sözleşmesi oluşturma
 - [ ] Periyodik bakım planlama / hatırlatma
@@ -116,11 +115,8 @@
 - [ ] Servis raporu paylaşımı
 - [ ] Hakediş hesaplama
 
+___
 
+### Ek Veritabanı Tabloları ###
 
-
-
-
-
-
-
+- [ ] Kullanıcı Ek Bilgileri _Henüz Belirlenmedi_
