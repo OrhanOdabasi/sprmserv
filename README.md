@@ -1,7 +1,10 @@
 ## Servis Yönetim Sistemi
 ### Pompa Döküman Arşiv Modülü
 
-- [ ] Pompa dokümanlarının kaydedilmesi / müşteriyle paylaşılması
+Pompa dokümanlarının kaydedilmesi / müşteriyle paylaşılması
+- [x] Veritabanı
+- [ ] Back End
+- [ ] Front End
 
 * **PompaModel  (Class)**
 * pompa
@@ -13,9 +16,13 @@
 
 ### Servis Talep Modülü
 
-- [ ] Servis organizasyonu talep formu
-- [ ] Devreye alma talep formu
-- [ ] Bakım sözleşmesi talep formu
+Servis organizasyonu talep formu
+Devreye alma talep formu
+Bakım sözleşmesi talep formu
+
+- [ ] Veritabanı
+- [ ] Back End
+- [ ] Front End
 
 * **Talep (Class)**
 * talep_firma_adi
@@ -39,8 +46,12 @@
 
 ### Araç Takip Modülü
 
-- [ ] Personel araç kullanım bilgileri
-- [ ] Araç kayıtları (km, sigorta tarihi, muayene tarihi, bakım tarihi)
+Personel araç kullanım bilgileri
+Araç kayıtları (km, sigorta tarihi, muayene tarihi, bakım tarihi)
+
+- [ ] Veritabanı
+- [ ] Back End
+- [ ] Front End
 
 * **Arac (Class)**
 * model
@@ -48,9 +59,13 @@
 
 ### Raporlama Modülü
 
-- [ ] Servis raporu hazırlama
-- [ ] Ürün servis geçmişinin kaydedilmesi
-- [ ] Ürün üzerine yapıştırılan QR kodu ile bilgilere erişim
+Servis raporu hazırlama
+Ürün servis geçmişinin kaydedilmesi
+Ürün üzerine yapıştırılan QR kodu ile bilgilere erişim
+
+- [ ] Veritabanı
+- [ ] Back End
+- [ ] Front End
 
 * **ServisRapor (Class)**
 * rapor_no
@@ -100,21 +115,32 @@
 
 ### Servis Planlama Modülü
 
-- [ ] Organizasyon planlama
-- [ ] Personel yönlendirme
-- [ ] Personel servis programının kaydı, kontrolü ve takibi
+Organizasyon planlama
+Personel yönlendirme
+Personel servis programının kaydı, kontrolü ve takibi
+
+- [ ] Veritabanı
+- [ ] Back End
+- [ ] Front End
 
 ### Periyodik Bakım Modülü
 
-- [ ] Periyodik bakım sözleşmesi oluşturma
-- [ ] Periyodik bakım planlama / hatırlatma
+Periyodik bakım sözleşmesi oluşturma
+Periyodik bakım planlama / hatırlatma
+
+- [ ] Veritabanı
+- [ ] Back End
+- [ ] Front End
 
 ### Yetkili Servis Entegrasyon Modülü
 
-- [ ] Servis organizasyon yönlendirme
-- [ ] Servis raporu paylaşımı
-- [ ] Hakediş hesaplama
+Servis organizasyon yönlendirme
+Servis raporu paylaşımı
+Hakediş hesaplama
 
+- [ ] Veritabanı
+- [ ] Back End
+- [ ] Front End
 ___
 
 ### Ek Veritabanı Tabloları ###
