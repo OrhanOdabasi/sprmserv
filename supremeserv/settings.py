@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'PompaModel',
     'Talep',
     'Arac',
+    'Musteri',
 ]
 
 MIDDLEWARE = [

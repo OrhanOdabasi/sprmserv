@@ -69,6 +69,28 @@ Araç kayıtları (sigorta tarihi, muayene tarihi, bakım tarihi)
 * teslim_km
 _Servis yönlendirme eklenecek_
 
+### Müşteri Bilgi Modülü
+
+Temel müşteri bilgileri
+Servis raporu için saha bilgileri
+
+- [x] Veritabanı
+- [ ] Back End
+- [ ] Front End
+
+* **Musteri (Class)**
+* firma_adi
+* firma_adresi
+
+* **Saha (Class)**
+* musteri_saha -> Musteri
+* saha_adi
+* saha_adresi
+* saha_ilgili
+* saha_ilgili_tel
+* saha_ilgili_eposta
+
+
 ### Raporlama Modülü
 
 Servis raporu hazırlama
@@ -113,17 +135,6 @@ Servis raporu hazırlama
 * motor_devir
 * motor_uretim_yili
 
-* **Musteri (Class)**
-* firma_adi
-* firma_adresi
-
-* **Saha (Class)**
-* saha_adi
-* saha_adresi
-* saha_adresi
-* saha_ilgili
-* saha_ilgili_tel
-* saha_ilgili_eposta
 
 ### Servis Planlama Modülü
 
