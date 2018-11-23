@@ -6,7 +6,7 @@ from .utilities import createRequetNo
 class Talep(models.Model):
 
     class Meta:
-        # Servis taleplerinin listesi
+        # Service request model
         verbose_name = "Servis Talebi"
         verbose_name_plural = "Servis Talepleri"
 

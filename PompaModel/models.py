@@ -5,7 +5,7 @@ from django.db import models
 class PompaModel(models.Model):
 
     class Meta:
-        # KSB pompa modelleri listesi
+        # Pump types model
         verbose_name = "Pompa Modeli"
         verbose_name_plural = "Pompa Modelleri"
 

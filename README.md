@@ -20,7 +20,7 @@ Servis organizasyonu talep formu
 Devreye alma talep formu
 Bakım sözleşmesi talep formu
 
-- [ ] Veritabanı
+- [x] Veritabanı
 - [ ] Back End
 - [ ] Front End
 
