@@ -25,6 +25,7 @@ Bakım sözleşmesi talep formu
 - [ ] Front End
 
 * **Talep (Class)**
+* talep_no
 * talep_firma_adi
 * talep_amaci
 * talep_yetkili
