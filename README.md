@@ -47,24 +47,25 @@ Bakım sözleşmesi talep formu
 
 ### Araç Takip Modülü
 
-Personel araç kullanım bilgileri (kullanıcı, teslim alma ve teslim etme tarihleri, teslim km'si, yonlendirme)
+Personel araç kullanım bilgileri
 Araç kayıtları (sigorta tarihi, muayene tarihi, bakım tarihi)
 
-- [ ] Veritabanı
+- [x] Veritabanı
 - [ ] Back End
 - [ ] Front End
 
 * **Arac (Class)**
+* plaka
 * model
 * sigorta_tarihi
-* muayene_tarihi
 * muayene_tarihi
 * bakim_tarihi
 
 * **AracKullanim (Class)**
 * arac_surucu -> User
-* teslim_alma_tarih
-* teslim_etme_tarih
+* arac_kullanim -> Arac
+* alis_tarih
+* teslim_tarih
 * teslim_km
 _Servis yönlendirme eklenecek_
 
