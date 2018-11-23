@@ -30,7 +30,7 @@ Bakım sözleşmesi talep formu
 * talep_amaci
 * talep_yetkili
 * talep_yetkili_tel
-* talep_pompa_adi | Pompalar.pompa
+* talep_pompa_adi -> PompaModel.pompa
 * talep_pompa_tipi
 * talep_pompa_serino
 * talep_tarihi
@@ -47,8 +47,8 @@ Bakım sözleşmesi talep formu
 
 ### Araç Takip Modülü
 
-Personel araç kullanım bilgileri
-Araç kayıtları (km, sigorta tarihi, muayene tarihi, bakım tarihi)
+Personel araç kullanım bilgileri (kullanıcı, teslim alma ve teslim etme tarihleri, teslim km'si, yonlendirme)
+Araç kayıtları (sigorta tarihi, muayene tarihi, bakım tarihi)
 
 - [ ] Veritabanı
 - [ ] Back End
@@ -56,7 +56,17 @@ Araç kayıtları (km, sigorta tarihi, muayene tarihi, bakım tarihi)
 
 * **Arac (Class)**
 * model
-* km
+* sigorta_tarihi
+* muayene_tarihi
+* muayene_tarihi
+* bakim_tarihi
+
+* **AracKullanim (Class)**
+* arac_surucu -> User
+* teslim_alma_tarih
+* teslim_etme_tarih
+* teslim_km
+_Servis yönlendirme eklenecek_
 
 ### Raporlama Modülü
 
