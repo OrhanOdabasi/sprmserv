@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Talep',
     'Arac',
     'Musteri',
+    'ServisRapor',
 ]
 
 MIDDLEWARE = [
