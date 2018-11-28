@@ -17,10 +17,11 @@ class PompaModel(models.Model):
     pompa_patlamis = models.FileField(upload_to="Patlamis/", null=True, blank=True, verbose_name="Patlamış Resim")
 
     def __str__(self):
-        return "{pompa} - {pompa_aciklama}".format(pompa=self.pompa, pompa_aciklama=self.pompa_aciklama)
+        return f"{self.pompa_model} - {self.pompa_aciklama}"
 
     def save(self, *args, **kwargs):
-        self.pompa = self.pompa.upper()
+        self.pompa_model = self.pompa_model.upper()
+        self.pompa_aciklama = self.pompa_aciklama.lower().capitalize()
         super(PompaModel, self).save(*args, **kwargs)
 
     # TODO: Delete media file when the instance is deleted
