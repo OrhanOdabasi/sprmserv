@@ -14,6 +14,7 @@ class Arac(models.Model):
     arac_sigorta_tarih = models.DateField(verbose_name="Araç Sigorta Tarihi")
     arac_muayene_tarih = models.DateField(verbose_name="Araç Muayene Tarihi")
     arac_bakim_tarih = models.DateField(verbose_name="Araç Bakım Tarihi")
+    arac_ego_tarih = models.DateField(null=True, blank=True, verbose_name="Araç Ego Tarihi")
 
     def __str__(self):
         return f"{self.arac_plaka} || {self.arac_model}"
