@@ -17,7 +17,7 @@ class Arac(models.Model):
     arac_ego_tarih = models.DateField(null=True, blank=True, verbose_name="Araç Ego Tarihi")
 
     def __str__(self):
-        return f"{self.arac_plaka} || {self.arac_model}"
+        return f"{self.arac_plaka} - {self.arac_model}"
 
     def save(self, *args, **kwargs):
         self.arac_plaka = self.arac_plaka.upper()
