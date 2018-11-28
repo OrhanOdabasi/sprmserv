@@ -20,8 +20,9 @@ class Arac(models.Model):
 
     def save(self, *args, **kwargs):
         self.arac_plaka = self.arac_plaka.upper()
+        self.arac_model = self.arac_model.lower().title()
         super(Arac, self).save(*args, **kwargs)
-        
+
 
 class AracKullanim(models.Model):
 
