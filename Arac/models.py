@@ -11,9 +11,9 @@ class Arac(models.Model):
 
     arac_plaka = models.CharField(max_length=11, null=False, blank=False, unique=True, verbose_name="Araç Plakası")
     arac_model = models.CharField(max_length=25, null=False, blank=False, verbose_name="Araç Modeli")
-    arac_sigorta_tarih = models.DateField(verbose_name="Araç Sigorta Tarihi")
-    arac_muayene_tarih = models.DateField(verbose_name="Araç Muayene Tarihi")
-    arac_bakim_tarih = models.DateField(verbose_name="Araç Bakım Tarihi")
+    arac_sigorta_tarih = models.DateField(null=True, blank=True, verbose_name="Araç Sigorta Tarihi")
+    arac_muayene_tarih = models.DateField(null=True, blank=True, verbose_name="Araç Muayene Tarihi")
+    arac_bakim_tarih = models.DateField(null=True, blank=True, verbose_name="Araç Bakım Tarihi")
     arac_ego_tarih = models.DateField(null=True, blank=True, verbose_name="Araç Ego Tarihi")
 
     def __str__(self):
