@@ -97,7 +97,7 @@ Servis raporu hazırlama
 Ürün servis geçmişinin kaydedilmesi
 Ürün üzerine yapıştırılan QR kodu ile bilgilere erişim
 
-- [ ] Veritabanı
+- [x] Veritabanı
 - [ ] Back End
 - [ ] Front End
 

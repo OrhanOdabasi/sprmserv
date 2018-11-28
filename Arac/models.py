@@ -9,7 +9,7 @@ class Arac(models.Model):
         verbose_name = "Araç"
         verbose_name_plural = "Araçlar"
 
-    arac_plaka = models.CharField(max_length=8, null=False, blank=False, unique=True, verbose_name="Araç Plakası")
+    arac_plaka = models.CharField(max_length=11, null=False, blank=False, unique=True, verbose_name="Araç Plakası")
     arac_model = models.CharField(max_length=25, null=False, blank=False, verbose_name="Araç Modeli")
     arac_sigorta_tarih = models.DateField(verbose_name="Araç Sigorta Tarihi")
     arac_muayene_tarih = models.DateField(verbose_name="Araç Muayene Tarihi")
@@ -18,6 +18,10 @@ class Arac(models.Model):
     def __str__(self):
         return f"{self.arac_plaka} || {self.arac_model}"
 
+    def save(self, *args, **kwargs):
+        self.arac_plaka = self.arac_plaka.upper()
+        super(Arac, self).save(*args, **kwargs)
+        
 
 class AracKullanim(models.Model):
 
