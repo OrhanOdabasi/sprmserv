@@ -16,6 +16,7 @@ class Musteri(models.Model):
         return f"{self.firma_adi}"
 
 
+# TODO: saha ilgilisi silinecek
 class Saha(models.Model):
 
     class Meta:
