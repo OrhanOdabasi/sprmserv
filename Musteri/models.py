@@ -27,7 +27,7 @@ class Saha(models.Model):
         verbose_name = "Saha"
         verbose_name_plural = "Sahalar"
 
-    musteri_saha = models.ForeignKey(Musteri, on_delete=models.CASCADE)
+    musteri_saha = models.ForeignKey(Musteri, on_delete=models.CASCADE, verbose_name="Müşteri")
     saha_adi = models.CharField(max_length=30, null=False, blank=False, verbose_name="Saha Adı")
     saha_adresi = models.TextField(max_length=200, null=False, blank=False, verbose_name="Saha Adresi")
 
@@ -37,4 +37,4 @@ class Saha(models.Model):
     def save(self, *args, **kwargs):
         self.saha_adi = self.saha_adi.lower().title()
         self.saha_adresi = self.saha_adresi.lower().title()
-        super(Saha, self).save(*args, **kwargs)        
+        super(Saha, self).save(*args, **kwargs)
