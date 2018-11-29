@@ -3,11 +3,11 @@ from django.contrib.auth.models import User
 from Musteri.models import Saha
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-# Create your models here.
+
 class Arac(models.Model):
 
     class Meta:
-    # Model for vehicle and their drivers
+        # Araç kayıtları
         verbose_name = "Araç"
         verbose_name_plural = "Araçlar"
 
@@ -30,13 +30,12 @@ class Arac(models.Model):
 class AracKullanim(models.Model):
 
     class Meta:
-        # Vehicle driving details
+        # Araç kullanım bilgileri
         verbose_name = "Araç Kullanımı"
         verbose_name_plural = "Araç Kullanımları"
 
     arac_surucu = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE, verbose_name="Araç Sürücüsü")
-    arac_kullanim = models.ForeignKey(Arac, default=0, null=False, blank=False, on_delete=models.CASCADE, verbose_name="Kullandığı Araç") # fix default=0
-    # aracın gittiği müşteri / saha
+    arac_kullanim = models.ForeignKey(Arac, default=0, null=False, blank=False, on_delete=models.CASCADE, verbose_name="Kullandığı Araç") # FIXME: default must be removed
     arac_saha_dest = models.ForeignKey(Saha, default=0, null=False, blank=False, on_delete=models.CASCADE, verbose_name="Aracın Gittiği Saha")
     arac_alis_tarih = models.DateTimeField(null=False, blank=False, verbose_name="Araç Alış Tarihi")
     arac_teslim_tarihi = models.DateTimeField(null=False, blank=False, verbose_name="Araç Teslim Tarihi")
