@@ -17,7 +17,7 @@ class Pompa(models.Model):
     servis_pompa = models.ForeignKey(PompaModel, on_delete=models.CASCADE)
     servis_pompa_tip = models.CharField(max_length=20, null=True, blank=False, verbose_name="Pompa Tipi")
     servis_pompa_serino = models.CharField(max_length=20, null=False, blank=False, verbose_name="Pompa Seri No")
-    servis_pompa_uretim_yıl = models.PositiveIntegerField(validators=[MaxValueValidator(2023), MinValueValidator(1871)], null=True, blank=True, verbose_name="Pompa Üretim Yılı")
+    servis_pompa_uretim_yil = models.PositiveIntegerField(validators=[MaxValueValidator(2023), MinValueValidator(1871)], null=True, blank=True, verbose_name="Pompa Üretim Yılı")
     debi_birim_sec = (
     ('msa', 'm3/sa'),
     ('lsn', 'lt/sn'),
@@ -39,9 +39,9 @@ class Pompa(models.Model):
     servis_pompa_guc = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, verbose_name="Pompa Gücü")
     servis_pompa_giris_b = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, verbose_name="Giriş Basıncı [bar]")
     servis_pompa_cikis_b = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, verbose_name="Çıkış Basıncı [bar]")
-    servis_pompa_uretim_yıl = models.PositiveIntegerField(validators=[MinValueValidator(1871), MaxValueValidator(2023)], null=True, blank=True, verbose_name="Pompa Üretim Yılı")
+    servis_pompa_uretim_yil = models.PositiveIntegerField(validators=[MinValueValidator(1871), MaxValueValidator(2023)], null=True, blank=True, verbose_name="Pompa Üretim Yılı")
     servis_pompa_akiskan = models.CharField(max_length=15, null=True, blank=True, verbose_name="Akışkan")
-    servis_pompa_akiskan_sicaklık = models.IntegerField(validators=[MinValueValidator(-50), MaxValueValidator(400)], null=True, blank=True, verbose_name="Akışkan Sıcaklığı (C)")
+    servis_pompa_akiskan_sicaklik = models.IntegerField(validators=[MinValueValidator(-50), MaxValueValidator(400)], null=True, blank=True, verbose_name="Akışkan Sıcaklığı (C)")
     servis_pompa_titresim = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True, verbose_name="Pompa Titreşimi [mm/sn2]")
     servis_pompa_gerilim = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(1000)], null=True, blank=True, verbose_name="Pompa Gerilimi [V]")
     servis_pompa_akim = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(150)], null=True, blank=True, verbose_name="Pompa Akımı [I]")
@@ -126,7 +126,7 @@ class ServisRapor(models.Model):
     motor_etiket_limit = models.BooleanField(default=False, verbose_name="Elektrik motoru etiket bilgileri kullanım limitleri içinde mi?")
     motor_donme_yonu = models.BooleanField(default=False, verbose_name="Elektrik motoru dönme yönü doğru mu?")
     yerlesim_sicaklik = models.BooleanField(default=False, verbose_name="Yerleşim mahalinin sıcaklığı uygun mu?")
-    flator_baglantı = models.BooleanField(default=False, verbose_name="Pano flatör bağlantısı yapıldı mı?")
+    flator_baglanti = models.BooleanField(default=False, verbose_name="Pano flatör bağlantısı yapıldı mı?")
     genlesme_tank_basinc = models.BooleanField(default=False, verbose_name="Genleşme tank basıncı uygun mu?")
     pompa_etiket_calisma = models.BooleanField(default=False, verbose_name="Pompa etiket değerlerinde çalışıyor mu?")
     yerlesim_drenaj = models.BooleanField(default=False, verbose_name="Yerleşim mahalinde drenaj hattı var mı?")
