@@ -27,7 +27,7 @@ class Talep(models.Model):
     betonlama = models.BooleanField(default=False, verbose_name="Pompa kaidesi betonla (grout) sabitlendi mi?")
     is_sagligi = models.BooleanField(default=False, verbose_name="İş Sağlığı ve güvenliği çerçevesinde gerekli önlemler alındı mı?")
     talep_org_tarihi = models.DateField(blank=False, verbose_name="Organizasyon Tarih Talebi")
-    yetkili_onayi = models.BooleanField(default=False, null=False, blank=False)
+    yetkili_onayi = models.BooleanField(default=False, null=False, blank=False, verbose_name="Yetkili Onayı")
 
     def __str__(self):
         return f"{self.talep_no} || {self.firma_adi} || {self.talep_yetkili}"

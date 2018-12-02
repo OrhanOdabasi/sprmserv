@@ -13,8 +13,8 @@ class PompaModel(models.Model):
         verbose_name = "Pompa Modeli"
         verbose_name_plural = "Pompa Modelleri"
 
-    pompa_model = models.CharField(max_length=20, null=True, blank=False, unique=True, verbose_name="Pompa Modeli") # FIXME: null False olacak
-    pompa_aciklama = models.TextField(max_length=160,null=True, blank=False, verbose_name="Pompa Açıklaması") # FIXME: null false olacak
+    pompa_model = models.CharField(max_length=20, null=True, blank=False, unique=True, verbose_name="Pompa Modeli") # TODO: null must be false in production
+    pompa_aciklama = models.TextField(max_length=160, null=True, blank=False, verbose_name="Pompa Açıklaması") # TODO: null must be false in production
     pompa_resim = models.ImageField(upload_to=pompa_resim_isimlendirme, null=True, blank=False, verbose_name="Pompa Resmi")
     pompa_bi_kitapcigi = models.FileField(upload_to=pompa_bi_isimlendirme, null=True, blank=True, verbose_name="Bakım İşletme Kitapçığı")
     pompa_tip_kitapcigi = models.FileField(upload_to=pompa_tip_isimlendirme, null=True, blank=True, verbose_name="Tip Kitapçığı")

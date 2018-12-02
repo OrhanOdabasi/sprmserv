@@ -25,8 +25,8 @@ class Pompa(models.Model):
     ('ksa', 'kg/sn'),
     )
     servis_pompa_debi_birim = models.CharField(max_length=3, choices=debi_birim_sec, null=True, blank=True, verbose_name="Debi Birimi")
-    servis_pompa_debi = models.DecimalField(max_digits=8, decimal_places=3, null=True, blank=True, verbose_name="Pompa Debisi") # NOTE: hangi ölçü biriminden kaydedilecek
-    servis_pompa_yukseklik = models.DecimalField(max_digits=8, decimal_places=3, null=True, blank=True, verbose_name="Basma Yüksekliği [mSS]") # NOTE: hangi ölçü biriminden kaydedilecek
+    servis_pompa_debi = models.DecimalField(max_digits=8, decimal_places=3, null=True, blank=True, verbose_name="Pompa Debisi")
+    servis_pompa_yukseklik = models.DecimalField(max_digits=8, decimal_places=3, null=True, blank=True, verbose_name="Basma Yüksekliği [mSS]")
     servis_pompa_fan_capi = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(1000)], null=True, blank=True, verbose_name="Fan Çapı")
     servis_pompa_verim = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True, verbose_name="Verim")
     servis_pompa_devir = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10000)], null=False, blank=False, verbose_name="Devir [RPM]")
@@ -81,7 +81,7 @@ class ServisRapor(models.Model):
     ('10', 'Merkez Servis'),
     )
     servis_grubu = models.CharField(choices=servis_grubu_sec, max_length=2, null=False, blank=False, verbose_name="Servis Grubu")
-    servis_rapor_no = models.CharField(max_length=13, null=False, blank=False, verbose_name="Rapor No") # TODO: servis raporu oluşturma
+    servis_rapor_no = models.CharField(max_length=13, null=False, blank=False, verbose_name="Rapor No")
     servis_turu_sec = (
         ('BK', 'Bakım'),
         ('DA', 'Devreye Alma'),
@@ -91,15 +91,15 @@ class ServisRapor(models.Model):
         ('TA', 'Tamir'),
     )
     servis_turu = models.CharField(choices=servis_turu_sec, max_length=2, null=False, blank=False, verbose_name="Servis Türü")
-    rapor_musteri = models.ForeignKey(Musteri, on_delete=models.CASCADE)
-    rapor_saha = models.ForeignKey(Saha, on_delete=models.CASCADE) # TODO: limit_choices_to ile seçenekleri daraltmak gerekiyor.
+    rapor_musteri = models.ForeignKey(Musteri, on_delete=models.CASCADE, verbose_name="Müşteri")
+    rapor_saha = models.ForeignKey(Saha, on_delete=models.CASCADE, verbose_name="Müşteri Saha") # TODO: limit_choices_to ile seçenekleri daraltmak gerekiyor.
     rapor_yetkili = models.CharField(max_length=25, null=False, blank=False, verbose_name="Rapor Yetkilisi")
     rapor_yetkili_tel = models.CharField(max_length=12, null=False, blank=False, verbose_name="Yetkili Telefon No")
     rapor_yetkili_eposta = models.EmailField(null=True, blank=True, verbose_name="Yetkili E-Posta")
     servis_talep_tarih = models.DateField(null=True, blank=True, verbose_name="Servis Talep Tarihi")
     servis_suresi = models.DurationField(null=False, blank=False, verbose_name="Servis Süresi")
     toplam_mesafe = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(2040)], null=False, blank=False, verbose_name="Toplam Mesafe")
-    servis_pompa = models.ForeignKey(Pompa, on_delete=models.CASCADE)
+    servis_pompa = models.ForeignKey(Pompa, on_delete=models.CASCADE, verbose_name="Pompa")
 
     kaide_ankraj = models.BooleanField(default=False, verbose_name="Pompa kaide ankraj civataları ile sabitleşmiş mi?")
     kaide_beton = models.BooleanField(default=False, verbose_name="Pompa kaidenin içine (Grout) beton dökülmüş mü?")
@@ -135,7 +135,7 @@ class ServisRapor(models.Model):
     yerlesim_drenaj = models.BooleanField(default=False, verbose_name="Yerleşim mahalinde drenaj hattı var mı?")
 
     rapor_detay = models.TextField(max_length=3000, null=False, blank=False, verbose_name="Açıklama")
-    servis_personel = models.ForeignKey(User, on_delete=models.CASCADE)
+    servis_personel = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Servis Personeli")
     servis_personel_onay = models.BooleanField(default=False, verbose_name="Servis Personelinin Onayı")
     rapor_musteri_yetkili_onay = models.BooleanField(default=False, verbose_name="Müşteri Yetkilisinin Onayı")
 
