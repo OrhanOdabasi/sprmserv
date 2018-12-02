@@ -6,7 +6,7 @@ from .utilities import createReportNo
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import datetime
 
-# Create your models here.
+
 class Pompa(models.Model):
 
     class Meta:
@@ -27,14 +27,15 @@ class Pompa(models.Model):
     servis_pompa_debi_birim = models.CharField(max_length=3, choices=debi_birim_sec, null=True, blank=True, verbose_name="Debi Birimi")
     servis_pompa_debi = models.DecimalField(max_digits=8, decimal_places=3, null=True, blank=True, verbose_name="Pompa Debisi")
     servis_pompa_yukseklik = models.DecimalField(max_digits=8, decimal_places=3, null=True, blank=True, verbose_name="Basma Yüksekliği [mSS]")
-    servis_pompa_fan_capi = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(1000)], null=True, blank=True, verbose_name="Fan Çapı")
-    servis_pompa_verim = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True, verbose_name="Verim")
+    servis_pompa_fan_capi = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(1000)], null=True, blank=True, verbose_name="Fan Çapı [mm]")
+    servis_pompa_verim = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)], null=True, blank=True, verbose_name="Verim (%)")
     servis_pompa_devir = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10000)], null=False, blank=False, verbose_name="Devir [RPM]")
-    pompa_guc_birim_sec = (
+    guc_birim_sec = (
     ('kw', 'kW'),
     ('mw', 'MW'),
     ('hp', 'HP'),
     )
+    servis_pompa_guc_birim = models.CharField(max_length=2, choices=guc_birim_sec, null=True, blank=True, verbose_name="Motor Güç Birimi")
     servis_pompa_guc = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, verbose_name="Pompa Gücü")
     servis_pompa_giris_b = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, verbose_name="Giriş Basıncı [bar]")
     servis_pompa_cikis_b = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True, verbose_name="Çıkış Basıncı [bar]")
@@ -50,19 +51,14 @@ class Pompa(models.Model):
     servis_motor_serino = models.CharField(max_length=25, null=True, blank=True, verbose_name="Motor Seri No")
     servis_motor_gerilim = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(1000)], null=True, blank=True, verbose_name="Motor Gerilimi [V]")
     servis_motor_akim = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(150)], null=True, blank=True, verbose_name="Motor Akımı [I]")
-    motor_guc_birim_sec = (
-    ('kw', 'kW'),
-    ('mw', 'MW'),
-    ('hp', 'HP'),
-    )
-    servis_motor_guc_birim = models.CharField(max_length=2, choices=motor_guc_birim_sec, null=True, blank=True, verbose_name="Motor Güç Birimi")
+    servis_motor_guc_birim = models.CharField(max_length=2, choices=guc_birim_sec, null=True, blank=True, verbose_name="Motor Güç Birimi")
     servis_motor_guc = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True, verbose_name="Motor Gücü")
     servis_motor_cosphi = models.IntegerField(validators=[MinValueValidator(-90), MaxValueValidator(90)], null=True, blank=True, verbose_name="Motor CosPhi")
     servis_motor_devir = models.PositiveIntegerField(validators=[MinValueValidator(0), MaxValueValidator(10000)], null=True, blank=True, verbose_name="Devir [RPM]")
     servis_motor_uretim_yil = models.IntegerField(validators=[MinValueValidator(1871), MaxValueValidator(2023)], null=True, blank=True, verbose_name="Motor Üretim Yılı")
 
     def __str__(self):
-        return f"{self.servis_pompa} - {self.servis_pompa_tip} - {self.servis_pompa_serino}"
+        return f"{self.servis_pompa} {self.servis_pompa_tip} - {self.servis_pompa_serino}"
 
     def __save__(self, *args, **kwargs):
         self.servis_pompa_tip = self.servis_pompa_tip.upper()
@@ -81,7 +77,7 @@ class ServisRapor(models.Model):
     ('10', 'Merkez Servis'),
     )
     servis_grubu = models.CharField(choices=servis_grubu_sec, max_length=2, null=False, blank=False, verbose_name="Servis Grubu")
-    servis_rapor_no = models.CharField(max_length=13, null=False, blank=False, verbose_name="Rapor No")
+    servis_rapor_no = models.CharField(max_length=13, null=False, blank=True, verbose_name="Rapor No")
     servis_turu_sec = (
         ('BK', 'Bakım'),
         ('DA', 'Devreye Alma'),
@@ -96,9 +92,10 @@ class ServisRapor(models.Model):
     rapor_yetkili = models.CharField(max_length=25, null=False, blank=False, verbose_name="Rapor Yetkilisi")
     rapor_yetkili_tel = models.CharField(max_length=12, null=False, blank=False, verbose_name="Yetkili Telefon No")
     rapor_yetkili_eposta = models.EmailField(null=True, blank=True, verbose_name="Yetkili E-Posta")
-    servis_talep_tarih = models.DateField(null=True, blank=True, verbose_name="Servis Talep Tarihi")
-    servis_suresi = models.DurationField(null=False, blank=False, verbose_name="Servis Süresi")
-    toplam_mesafe = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(2040)], null=False, blank=False, verbose_name="Toplam Mesafe")
+    servis_gidis_tarih = models.DateTimeField(null=True, blank=False, verbose_name="Servis Gidiş Tarihi")
+    servis_donus_tarih = models.DateTimeField(null=True, blank=False, verbose_name="Servis Donüş Tarihi")
+    servis_suresi = models.DurationField(null=True, blank=True, verbose_name="Servis Süresi")
+    toplam_mesafe = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(2040)], null=False, blank=False, verbose_name="Toplam Mesafe [Km]")
     servis_pompa = models.ForeignKey(Pompa, on_delete=models.CASCADE, verbose_name="Pompa")
 
     kaide_ankraj = models.BooleanField(default=False, verbose_name="Pompa kaide ankraj civataları ile sabitleşmiş mi?")
@@ -140,10 +137,14 @@ class ServisRapor(models.Model):
     rapor_musteri_yetkili_onay = models.BooleanField(default=False, verbose_name="Müşteri Yetkilisinin Onayı")
 
     def __str__(self):
-        return f"{self.servis_rapor_no} - {self.rapor_musteri.firma_adi}"
+        return f"{self.servis_rapor_no} - {self.servis_pompa.servis_pompa.pompa_model} {self.servis_pompa.servis_pompa_tip} - {self.rapor_musteri.firma_adi}"
 
     def save(self, *args, **kwargs):
+        # duration field kaydet
+        self.servis_suresi = self.servis_donus_tarih - self.servis_gidis_tarih
+        # yetkili ilk harfleri büyüt
+        self.rapor_yetkili = self.rapor_yetkili.title()
+        # rapor numarası belirle / rasgele
         report_no = createReportNo(self, self.servis_grubu)
-        date_element = f"{datetime.now().day}{datime.now().month}{datetime.now().year}"
-        self.servis_rapor_no = f"{date_element}{report_no}"
+        self.servis_rapor_no = f"{report_no}"
         super(ServisRapor, self).save(*args, **kwargs)

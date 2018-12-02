@@ -35,6 +35,6 @@ class Talep(models.Model):
     def save(self, *args, **kwargs):
         self.talep_no = createRequetNo(self)
         self.firma_adi = self.firma_adi.lower().title()
-        self.talep_yetkili = self.talep_yetkili.lower().title()
+        self.talep_yetkili = self.talep_yetkili.title()
         self.talep_pompa_tipi = self.talep_pompa_tipi.upper()
         super(Talep, self).save(*args, **kwargs)

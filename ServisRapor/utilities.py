@@ -14,7 +14,7 @@ def createReportNo(instance, central):
     # creates full request number with date information
     rapor_no = serviceReportNumberGen(6)
     klass = instance.__class__
-    request_exists = klass.objects.filter(rapor_no=rapor_no)
+    request_exists = klass.objects.filter(servis_rapor_no=rapor_no)
     if request_exists:
         return createReportNo()
     else:
